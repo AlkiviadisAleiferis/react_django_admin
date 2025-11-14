@@ -1,6 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Accordion from 'react-bootstrap/Accordion';
 import { Link } from "react-router-dom";
 import { ADMIN_SITE_PREFERENCES } from "../../settings";
 import { get_field_display_name } from "../../utils";
@@ -15,7 +16,7 @@ function SidebarApp({ app_name, is_first }) {
     );
 }
 
-function SidebarEntry({ app_name, model_name, awesome_icon, entry_name, disable_links }) {
+function SidebarModelEntry({ app_name, model_name, awesome_icon, label, disable_links }) {
     let link_classes =
         "sidebar-item nav-link p-1 d-flex flex-row" +
         " align-items-center justify-content-center " +
@@ -54,7 +55,7 @@ function SidebarEntry({ app_name, model_name, awesome_icon, entry_name, disable_
                         md="9"
                         className="d-none d-md-flex ps-1 pe-0 align-items-center justify-content-center text-center"
                     >
-                        <b style={{ fontSize: "14px" }}>{entry_name}</b>
+                        <b style={{ fontSize: "14px" }}>{label}</b>
                     </Col>
                 </Row>
             </Link>
@@ -62,60 +63,81 @@ function SidebarEntry({ app_name, model_name, awesome_icon, entry_name, disable_
     );
 }
 
-function Sidebar({ entities, disable_links, apps }) {
-    /* 
-    entities structure:
-    {
-        "app_name": [
-            {
-                "model_name": model_name,
-                "name": model_meta.verbose_name_plural,
-                "icon": getattr(model_admin, "sidebar_icon", None),
-                "permissions": {
-                    "view": True,
-                    "add": model_admin.has_add_permission(request),
-                    "delete": model_admin.has_delete_permission(request, None),
-                },
-            }
-        ],
-        .
-        .
-        .
+
+function build_sidebar_entry(entry, disable_links, key){
+    if (entry.type == "model") {
+        return (
+            <SidebarModelEntry
+                app_name={entry.app_name}
+                model_name={entry.model_name}
+                awesome_icon={entry.icon}
+                label={entry.label}
+                key={key}
+                disable_links={disable_links}
+            />
+        );
+    } else if (entry.type == "dropdown") {
+        let inner_entries_jsx = entry.dropdown_entries.map((e, index)=>build_sidebar_entry(e, disable_links, `${key}__${index}`));
+        return (
+            <Accordion defaultActiveKey="0" key={key} className="border-0" flush>
+                <Accordion.Item eventKey="0" className="border-0">
+                    <Accordion.Header className="border-0"><b>{entry.label}</b></Accordion.Header>
+                    <Accordion.Body className="border-0 p-0">
+                        {inner_entries_jsx}
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+        );
+
     }
+
+}
+
+
+function Sidebar({ sidebar, disable_links, extra }) {
+    /* 
+    sidebar structure:
+        [
+            {
+                "type": "dropdown" | "model" | "view", # required
+                "icon": str, # NOT required
+                "label": str, # required
+
+                "view_name": str, # required --> for "view" type only
+
+                "app_name": Model._meta.app_label, # required --> for "model" type only
+                "model_name": Model._meta.model_name, # required --> for "model" type only
+
+                "dropdown_entries": [ # --> only in case of "dropdown" type
+                    {
+                        "type": "model" | "view",
+                        "label": str,
+                        "icon": str,
+                        "app_name": Model._meta.app_label,
+                        "model_name": Model._meta.model_name,
+                        "view_name": str,
+                    }
+                ]
+            }, ..
+        ]
     */
-    let apps_entries = [];
-    let apps_entries_jsx = null;
+    let sidebar_entries = [];
+    let sidebar_entries_jsx = null;
 
-    if (entities) {
-        for (let app_name of apps) {
-            const is_first = apps_entries.length === 0;
-            const app_models = entities[app_name];
-            if (!app_models) {continue;}
+    if (sidebar) {
+        const is_first = sidebar_entries.length === 0;
 
-            let app_entries = app_models.map(function (model_data, index) {
-                return (
-                    <SidebarEntry
-                        app_name={app_name}
-                        model_name={model_data["model_name"]}
-                        awesome_icon={model_data["icon"]}
-                        entry_name={model_data["name"]}
-                        key={`${app_name}_model_${index}`}
-                        disable_links={disable_links}
-                    />
-                );
-            });
-            app_entries.unshift(<SidebarApp app_name={app_name} is_first={is_first} key={app_name} />)
-
-            apps_entries.push(app_entries);
-        }
-
-        apps_entries_jsx = apps_entries.map(function (app_entries, index) {
-                return (
-                    <div className="d-flex p-0 m-0 flex-column" key={index}>
-                        {app_entries}
-                    </div>
-                );
-            });
+        sidebar_entries = sidebar.map(function (entry, index) {
+            return build_sidebar_entry(entry, disable_links, `sidebar_entry_${index}`)
+        });
+        // sidebar_entries.unshift(<SidebarApp app_name={app_name} is_first={is_first} key={app_name} />)
+        sidebar_entries_jsx = sidebar_entries.map(function (entry, index) {
+            return (
+                <div className="d-flex p-0 m-0 flex-column" key={index}>
+                    {entry}
+                </div>
+            );
+        });
     }
 
     return (
@@ -124,7 +146,7 @@ function Sidebar({ entities, disable_links, apps }) {
             defaultActiveKey="/home"
             className="d-flex flex-column"
         >
-            {apps_entries_jsx}
+            {sidebar_entries_jsx}
         </Nav>
     );
 }

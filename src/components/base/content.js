@@ -27,7 +27,7 @@ function ListContent(props) {
     }
 
     const cached_base_info = getCache("base_info");
-    const can_add = check_model_add_permission(cached_base_info, model_name);
+    const can_add = check_model_add_permission(cached_base_info, app_name, model_name);
     const AboveListFiltersSection = get_above_list_filters_section(app_name, model_name);
 
     return (

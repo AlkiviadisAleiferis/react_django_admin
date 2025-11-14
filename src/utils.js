@@ -44,30 +44,25 @@ export function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-export function check_model_add_permission(base_info, model_name) {
-    let can_add = false;
+export function check_model_add_permission(base_info, app_name, model_name) {
+    if (base_info && base_info.sidebar.length) {
+        for (let entry of base_info.sidebar) {
+            console.log("entry = ", entry)
 
-    if (base_info) {
-        for (let app_name in base_info.entities) {
-            const models = base_info.entities[app_name];
+            if (entry.type == "model" && entry.model_name == model_name && entry.app_name == app_name) {
+                return Boolean(entry.permissions.add)
 
-            for (let model_info of models) {
-                if (
-                    model_info.model_name === model_name &&
-                    model_info.permissions.add
-                ) {
-                    can_add = true;
-                    break;
+            } else if (entry.type == "dropdown") {
+                for (let e of entry.dropdown_entries) {
+                    if (e.type == "model" && e.model_name == model_name && e.app_name == app_name) {
+                        return Boolean(e.permissions.add)
+                    }
                 }
-            }
-
-            if (can_add) {
-                break;
             }
         }
     }
 
-    return can_add;
+    return false;
 }
 
 export function get_model_verbose_name(base_info, model_name) {

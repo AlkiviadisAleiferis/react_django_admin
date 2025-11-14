@@ -75,7 +75,7 @@ export const CUSTOM_VIEW_API_ENDPOINTS = {...CUSTOM_VIEW_API_ENDPOINTS_OVERRIDE}
 /* ---------------- Visual Preferences ---------------- */
 
 export const ADMIN_SITE_PREFERENCES = {
-    site_name: "Django Admin",
+    site_name: "Django Admin Adapter",
     login_text: "Welcome to Django Admin",
     // logo
     logo_height_px: 55,

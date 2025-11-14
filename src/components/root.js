@@ -23,7 +23,7 @@ import "../index.css";
 export default function Root(props) {
     const userDispatch = useContext(userDispatchContext);
     const navigate = useNavigation();
-    const { entities, profile, apps } = useLoaderData();
+    const { sidebar, profile, extra } = useLoaderData();
 
     // DETERMINE AUTHENTICATION STATUS AT INIT :
     // if user exists in localStorage when reloading
@@ -112,7 +112,7 @@ export default function Root(props) {
                         scrollbarWidth: "none",
                     }}
                 >
-                    <Sidebar apps={apps} entities={entities} disable_links={false} />
+                    <Sidebar sidebar={sidebar} extra={extra} disable_links={false} />
                 </Col>
 
                 {/* ------- CONTENT ------- */}

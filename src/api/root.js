@@ -6,8 +6,9 @@ import { API_ENDPOINTS, API_BASE_URL } from "../settings";
 
 /* 
     Get base info from server
-    entities (sidebar entities accessible by user)
+    sidebar (sidebar entities accessible by user)
     profile (profile for user)
+    extra
 */
 
 export async function rootLoader({ params }) {
@@ -17,6 +18,7 @@ export async function rootLoader({ params }) {
     clear storages in proper case
     */
     const user_in_storage = getUserInStorage();
+
     if (
         user_in_storage &&
         (tokenExpiresSoon(user_in_storage.refresh_token) ||
@@ -48,13 +50,13 @@ export async function rootLoader({ params }) {
         }
 
         return { 
-            apps: base_info.apps,
-            entities: base_info.entities,
+            extra: base_info.extra,
+            sidebar: base_info.sidebar,
             profile: base_info.profile,
         };
     } catch (error) {
         sessionStorage.clear();
         appendErrorMessage("Failed to load basic info.");
-        return { entities: null, profile: null };
+        return { sidebar: null, profile: null, extra: null };
     }
 }

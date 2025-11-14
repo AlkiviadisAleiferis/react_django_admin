@@ -35,6 +35,14 @@ table tr td, table tr th{
     background: none !important;
 }
 
+.accordion-button {
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    border: 0px;
+}
+.accordion-collapse.collapse.show{
+    background-color: transparent !important;
+}
 #sidebar {
     border-bottom-right-radius: 0.5rem !important;
 }
