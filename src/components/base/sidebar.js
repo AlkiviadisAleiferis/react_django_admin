@@ -22,18 +22,65 @@ function SidebarModelEntry({ app_name, model_name, awesome_icon, label, disable_
         " align-items-center justify-content-center " +
         " w-100"; // text-white
 
-    const entity_list_url = `/${app_name}/${model_name}/`;
+    const path = `/${app_name}/${model_name}/`;
     const icon = awesome_icon === null ? "fa-solid fa-server" : awesome_icon;
 
     if (
-        window.location.pathname.includes(entity_list_url)
+        window.location.pathname.includes(path)
     ) {
         link_classes += " bg-selected";
     }
 
     return (
         <Nav.Item className="d-flex flex-row">
-            <Link to={disable_links ? "#" : `${entity_list_url}`} className={link_classes}>
+            <Link to={disable_links ? "#" : `${path}`} className={link_classes}>
+                <Row className="w-100 m-0 py-1 ps-2 justify-content-center">
+                    <Col
+                        xs="12"
+                        md="3"
+                        className="d-flex p-0 justify-content-center"
+                    >
+                        <i
+                            className={icon}
+                            style={{
+                                fontSize:
+                                    ADMIN_SITE_PREFERENCES.sidebar_icon_height_px +
+                                    "px",
+                            }}
+                        ></i>
+                    </Col>
+
+                    <Col
+                        xs="0"
+                        md="9"
+                        className="d-none d-md-flex ps-1 pe-0 align-items-center justify-content-center text-center"
+                    >
+                        <b style={{ fontSize: "14px" }}>{label}</b>
+                    </Col>
+                </Row>
+            </Link>
+        </Nav.Item>
+    );
+}
+
+function SidebarCustomViewEntry({ awesome_icon, label, client_view_path, disable_links }) {
+    let link_classes =
+        "sidebar-item nav-link p-1 d-flex flex-row" +
+        " align-items-center justify-content-center " +
+        " w-100"; // text-white
+
+    const path = client_view_path;
+    const icon = awesome_icon === null ? "fa-solid fa-server" : awesome_icon;
+
+    if (
+        window.location.pathname.includes(path)
+    ) {
+        link_classes += " bg-selected";
+    }
+
+    return (
+        <Nav.Item className="d-flex flex-row">
+            <Link to={disable_links ? "#" : `${path}`} className={link_classes}>
                 <Row className="w-100 m-0 py-1 ps-2 justify-content-center">
                     <Col
                         xs="12"
@@ -87,6 +134,17 @@ function build_sidebar_entry(entry, disable_links, key){
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+        );
+
+    } else if (entry.type == "view") {
+        return (
+            <SidebarCustomViewEntry
+                awesome_icon={entry.icon}
+                client_view_path={entry.client_view_path}
+                label={entry.label}
+                key={key}
+                disable_links={disable_links}
+            />
         );
 
     }
