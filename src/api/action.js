@@ -14,7 +14,7 @@ export async function actionLoader({ params, request }) {
     );
     let data = {
         select_across: params.select_across,
-        selected_objects: params.selected_objects,
+        selected_objects: params.selected_objects.split(','),
     };
 
     const action_url = API_BASE_URL + action_path;
@@ -67,7 +67,7 @@ export async function executeAction({ params, request }) {
     );
     let data = {
         select_across: params.select_across,
-        selected_objects: params.selected_objects,
+        selected_objects: params.selected_objects.split(','),
     };
 
     const action_url = API_BASE_URL + action_path;
