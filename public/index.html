@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <link
+            rel="icon"
+            href="/static/images/body/default_logo.svg"
+            sizes="32x32"
+            type="image/png"
+        />
+        <!--  Prevent admin panel being crawled by search engines -->
+        <meta name="robots" content="none, noarchive" />
+        <title>Django admin</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+
+    <body id="main_body" class="bg-main">
+        <div id="root" class="bg-main"></div>
+    </body>
+
+    <script>
+        (() => {
+            "use strict";
+
+            let stored_theme = localStorage.getItem("theme");
+
+            if (!stored_theme) {
+                localStorage.setItem("theme", "light");
+                stored_theme = "light";
+            }
+
+            const body = document.getElementById("main_body");
+
+            if (stored_theme == "dark") {
+                body.setAttribute("data-bs-theme", stored_theme);
+            } else {
+                body.setAttribute("data-bs-theme", "light");
+            }
+        })();
+    </script>
+</html>

@@ -1,0 +1,18 @@
+{
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "printWidth": 100,
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
+    "overrides": [
+        {
+            "files": ["settings.js", "src/api/*.js", "src/override.js"],
+            "options": {
+                "semi": true,
+                "printWidth": 250
+            }
+        }
+    ]
+}

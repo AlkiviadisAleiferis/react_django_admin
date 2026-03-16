@@ -1,0 +1,221 @@
+:root {
+    --nav-link-border-color: #277c72; /* #004789 */
+    --rounded-border-radius: 0.75rem;
+    --border-width: 4px;
+}
+
+html {
+    min-height: 100% !important;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100% !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: Arial;
+}
+
+b {
+    font-weight: 600;
+}
+
+table tr td,
+table tr th {
+    background: none !important;
+}
+
+#root {
+    position: relative !important;
+    min-height: 100% !important;
+}
+
+#list_table {
+    min-width: "1000px" !important;
+}
+
+#sidebar {
+    width: 320px;
+    height: 90vh !important;
+}
+
+#main_content {
+    width: 100%;
+}
+
+/* input,
+select,
+textarea {
+    border-radius: 0px !important;
+}
+
+select {
+    border-radius: 0px !important;
+} */
+
+[data-bs-theme="light"] {
+    .border-sidebar {
+        border-left: 3px solid !important;
+        border-left-color: #f0f0f0 !important;
+    }
+    .border {
+        border-width: 3px !important;
+        border-color: #f0eeee !important;
+    }
+    .border-end {
+        border-width: 3px !important;
+        border-color: #f0eeee !important;
+    }
+    .border-start {
+        border-width: 3px !important;
+        border-color: #f0eeee !important;
+    }
+    .border-top {
+        border-width: 3px !important;
+        border-color: #f0eeee !important;
+    }
+    .border-bottom {
+        border-width: 3px !important;
+        border-color: #f0eeee !important;
+    }
+    .bg-alt {
+        background: #ffffff;
+    }
+    .bg-main {
+        background: #f5f5f5;
+    }
+    .bg-selected {
+        background: #cfeee3;
+    }
+    /* 
+    CSS for the react-select elements
+    */
+    .css-13cymwt-control {
+        background: inherit !important;
+        border-width: 0.3px !important;
+        border-color: #dee2e6 !important;
+    }
+    .css-lnmdiq5-menu {
+        color: black !important;
+    }
+}
+[data-bs-theme="dark"] {
+    .border-sidebar {
+        border-left: 3px solid !important;
+        border-left-color: #0f1614 !important;
+    }
+    .border {
+        border-width: 3px !important;
+        border-color: #081210 !important;
+    }
+    .border-end {
+        border-width: 3px !important;
+        border-color: #081210 !important;
+    }
+    .border-start {
+        border-width: 3px !important;
+        border-color: #081210 !important;
+    }
+    .border-top {
+        border-width: 3px !important;
+        border-color: #081210 !important;
+    }
+    .border-bottom {
+        border-width: 3px !important;
+        border-color: #081210 !important;
+    }
+    .bg-alt {
+        background: rgba(20, 24, 26);
+    }
+    .bg-main {
+        background: rgb(18, 19, 19);
+    }
+    .bg-selected {
+        background: rgb(43, 58, 58);
+    }
+    /* 
+    CSS for the react-select elements
+    */
+    .css-13cymwt-control {
+        color: inherit !important;
+        background: rgb(255, 255, 255) !important;
+        border-width: 0.3px !important;
+        border-color: rgb(73, 80, 87) !important;
+    }
+    .css-t3ipsp-control {
+        color: inherit !important;
+        background: rgb(255, 255, 255) !important;
+        border-width: 0.3px !important;
+        border-color: rgb(73, 80, 87) !important;
+    }
+    .css-1nmdiq5-menu {
+        color: black !important;
+    }
+}
+
+.accordion-button {
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    border: 0px;
+}
+
+.accordion-collapse.collapse.show {
+    background-color: transparent !important;
+}
+
+.container-fluid {
+    justify-content: center;
+}
+
+.container {
+    max-width: 3840px;
+}
+
+.rounded {
+    border-radius: var(rounded-border-radius) !important;
+}
+
+.nav-link {
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    color: inherit !important;
+}
+
+.nav-link.active {
+    background-color: transparent !important;
+    border-bottom: 1rem solid !important;
+    border-bottom-width: 4px !important;
+    border-radius: 0.1rem !important;
+    border-color: var(--nav-link-border-color) !important;
+}
+
+.fade-in {
+    animation: fade-in 1.25s;
+}
+
+.fade-in-long {
+    animation: fade-in 3s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+.modal-fullscreen {
+    width: 100%;
+}
+
+.json-to-table tr:nth-child(even) {
+    background-color: inherit !important;
+}
+
+.btn-close {
+    margin: 6px !important;
+    padding: 0px !important;
+}
