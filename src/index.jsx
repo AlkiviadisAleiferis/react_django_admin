@@ -34,6 +34,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         // ------------
         children: [
+            ...custom_views_routes,
             {
                 path: "password_change/",
                 element: <PasswordChangeContent />,
@@ -85,8 +86,7 @@ const router = createBrowserRouter([
                 element: <ObjectHistoryContent />,
                 errorElement: <ErrorPage />,
                 loader: objectHistoryLoader
-            },
-            ...custom_views_routes
+            }
         ]
     }
 ]);
