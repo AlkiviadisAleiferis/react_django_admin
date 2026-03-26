@@ -222,7 +222,7 @@ export function build_object_fieldsets_tabs(
                 key={`${app}_${model}_fieldset_${index}`}
             >
                 <Row className="my-2">
-                    <Col xs="12" lg="8" xxl="6" className="d-flex flex-column">
+                    <Col xs="12" className="d-flex flex-column">
                         <StackedFieldset
                             app={app}
                             model={model}

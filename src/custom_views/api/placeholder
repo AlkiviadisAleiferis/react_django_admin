@@ -1,0 +1,47 @@
+/*
+placeholder file.
+Define your custom views Loaders/Actions in this file.
+
+---------------------------------------------------------------------------
+
+export async function customViewLoader({ params, request }) {
+    # The path of the API 
+    # should be appended in the settings
+
+    const custom_view_api_url = API_BASE_URL + API_ENDPOINTS[params.custom_view_name];
+
+    # Using GET as the
+    # default action method
+
+    try {
+        const r = await authAxios.get(custom_view_api_url);
+        const data = r.data;
+        return data;
+    } catch (error) {
+        appendErrorMessage("An error occurred.");
+    }
+}
+
+export async function customViewAction({ params, request }) {
+    # The path of the API 
+    # should be appended in the settings
+
+    const custom_view_api_url = API_BASE_URL + get_api_path(params.custom_view_name);
+
+    let form_data = await request.formData();
+
+    # Using POST as the
+    # default action method
+
+    try {
+        const r = await authAxios.post(custom_view_api_url, form_data, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+        return r.data;
+    } catch (error) {
+        appendErrorMessage("An error occurred.");
+    }
+}
+*/

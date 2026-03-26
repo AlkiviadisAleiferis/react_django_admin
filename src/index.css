@@ -37,6 +37,13 @@ table tr th {
 #sidebar {
     width: 320px;
     height: 90vh !important;
+    overflow-y: auto !important;
+    scrollbar-width: none;
+}
+
+#sidebar_container {
+    overflow-y: auto !important;
+    scrollbar-width: none;
 }
 
 #main_content {

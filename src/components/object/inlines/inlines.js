@@ -48,7 +48,10 @@ export function StackedInline({ inline, inline_error_data }) {
 
     return (
         <>
-            <Row className="mb-4" id={get_inline_container_id(inline.prefix)}>
+            <Row
+                className="mb-4 justify-content-center"
+                id={get_inline_container_id(inline.prefix)}
+            >
                 {/* -------- NON FORMS ERRORS -------- */}
                 {non_forms_error_jsx}
 
@@ -72,11 +75,12 @@ export function StackedInline({ inline, inline_error_data }) {
 export function ReadonlyTabularInline({ inline }) {
     const all_fieldnames = inline.all_fieldnames;
 
-    const cols = all_fieldnames.length > 5 ? 12 : all_fieldnames.length * 2;
+    // left for reference
+    // const cols = all_fieldnames.length > 5 ? 12 : all_fieldnames.length * 2;
 
     return (
         <Row className="mb-4">
-            <Col xs="12" xl={cols} className="d-flex flex-column">
+            <Col xs="12" className="d-flex flex-column">
                 <Table responsive hover>
                     <thead>
                         <tr>

@@ -120,8 +120,8 @@ export const ADMIN_SITE_PREFERENCES = {
     // SIDEBAR
     // ------------------------
     //
-    sidebar_classes: "p-0 m-0 h-100 d-none d-xxl-flex bg-alt",
-    sidebar_nav_classes: "d-flex flex-column w-100 p-2",
+    sidebar_classes: "p-0 m-0 h-100 d-none d-xxl-flex flex-nowrap bg-alt pb-5",
+    sidebar_nav_classes: "d-flex flex-column flex-nowrap pb-5 w-100",
     sidebar_link_classes: "sidebar-item nav-link rounded mx-1 p-1 d-flex flex-row" + " align-items-center justify-content-center " + " w-100",
     sidebar_font_size: "14px",
     sidebar_default_icon: "fa-regular fa-circle",
@@ -184,7 +184,7 @@ export const ADMIN_SITE_PREFERENCES = {
     footer_jsx: (
         <span>
             <a target="_blank" href="https://www.github.com/AlkiviadisAleiferis/django_admin_adapter">
-                Django admin adapter (v0.1)
+                Django admin adapter (v0.2)
             </a>{" "}
             React client 2026.
         </span>

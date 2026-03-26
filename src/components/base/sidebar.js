@@ -43,7 +43,8 @@ function Sidebar({ sidebar, disable_links, extra }) {
     return (
         <Nav
             defaultActiveKey="/home"
-            className={ADMIN_SITE_PREFERENCES.sidebar_nav_classes + " w-100 p-2"}
+            className={ADMIN_SITE_PREFERENCES.sidebar_nav_classes + " w-100"}
+            id="sidebar_container"
         >
             {sidebar_entries_jsx}
         </Nav>

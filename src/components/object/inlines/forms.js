@@ -215,7 +215,7 @@ export function StackedForm({
         <Col
             xs="12"
             lg="8"
-            xxl="4"
+            xxl="6"
             className="p-3 d-flex flex-column"
             id={inline_form_container_id}
         >
