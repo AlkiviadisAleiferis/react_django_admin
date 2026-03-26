@@ -2,6 +2,8 @@ import { SITE_PATH_OVERRIDE, ADMIN_SITE_PREFERENCES_OVERRIDE, TOKEN_EXP_OVERHEAD
 
 /* ---------------- Messages ---------------- */
 
+export const VERSION = "0.2.0";
+
 export const MESSAGE_TYPE_FAILURE = "F";
 export const MESSAGE_TYPE_SUCCESS = "S";
 export const MESSAGE_TYPE_WARNING = "W";
@@ -176,19 +178,6 @@ export const ADMIN_SITE_PREFERENCES = {
         }
         return <i className={"fa-solid fa-square-plus text-primary " + (extra_classes || "")} style={{ fontSize: "20px" }} {...opts}></i>;
     },
-    //
-    // ------------------------
-    // FOOTER
-    // ------------------------
-    //
-    footer_jsx: (
-        <span>
-            <a target="_blank" href="https://www.github.com/AlkiviadisAleiferis/django_admin_adapter">
-                Django admin adapter (v0.2)
-            </a>{" "}
-            React client 2026.
-        </span>
-    ),
     //
     // ------------------------
     // O V E R R I D E
