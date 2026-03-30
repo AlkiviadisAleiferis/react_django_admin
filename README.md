@@ -6,6 +6,11 @@ and its corresponding [Swagger](https://alkiviadisaleiferis.github.io/django_adm
 
 It utilizes React (18.\*) and Bootstrap 5.3 for theming.
 
+See the [live demo here](https://django-admin-adapter-demo.com)!
+
+user: demo \
+pass: demo
+
 The project aims at minimal external dependency by default.
 
 The `.env` file is configured for testing the package locally.
