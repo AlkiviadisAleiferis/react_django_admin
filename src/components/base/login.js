@@ -94,7 +94,7 @@ function LogIn() {
                                     <b>{ADMIN_SITE_PREFERENCES.login_text}</b>
                                 </h6>
 
-                                {tokenExpired && (
+                                {tokenExpired !== "null" && (
                                     <span className="text-danger text-sm mx-auto fade-in">
                                         Session expired
                                     </span>

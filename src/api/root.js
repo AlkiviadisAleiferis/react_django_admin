@@ -1,3 +1,4 @@
+import { getUser } from "../state/user";
 import { setCache, getCache } from "../cache";
 import { authAxios } from "./base";
 import { BASE_INFO_CACHE_TIME } from "../settings";
@@ -5,6 +6,12 @@ import { API_ENDPOINTS, API_BASE_URL } from "../settings";
 
 export async function rootLoader({ params }) {
     try {
+        const user = getUser();
+
+        if (!user) {
+            return { sidebar: null, profile: null, extra: null };
+        }
+
         let base_info = getCache("base_info");
 
         if (!base_info) {
