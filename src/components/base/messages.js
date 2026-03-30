@@ -83,7 +83,10 @@ function Messages(props) {
                 scroll={true}
                 className="border-0 shadow bg-alt"
             >
-                <Offcanvas.Body className="d-flex flex-column justify-content-start align-items-center">
+                <Offcanvas.Body
+                    className="d-flex flex-column justify-content-start align-items-center"
+                    style={{ maxWidth: "70%" }}
+                >
                     {messages_jsx}
                 </Offcanvas.Body>
             </Offcanvas>
